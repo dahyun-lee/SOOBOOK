@@ -15,10 +15,17 @@
 
 
 ### 2. 해야할 일
-- 라우터 설정으로 한페이지내에서 주소 바뀌고 정보부분만 바뀌도록 설정
+- 라우터 설정으로 한페이지내에서 주소 바뀌고 정보부분만 바뀌도록 설정해보기
 - 반응형으로 변경되었을 때 모바일에서의 접근성 고려하기
 - VUE.js에서 component별로 나누어 제작
 
 ### 3. 프로젝트 중 이슈
 - 구글 책검색 페이지에서 드래그앤 드롭으로 책 추가 후, 추가된 책을 DOM에서 찾아야 할 때 어떤 방식으로 찾아야 하는가?  
-(동적으로 변경된 요소를 찾아내는 방법 알아보기)
+_(동적으로 변경된 요소를 찾아내는 방법 알아보기)_
+
+- 회원가입 api 서버 연결 시 서버에 정보가 전달되지 않는 이유 찾기.   
+[[Access_control_CORS 참고링크]](https://developer.mozilla.org/ko/docs/Web/HTTP/Access_control_CORS)
+```
+XMLHttpRequest cannot load https://soobook.devlim.net/api/user/signup/. Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:3000' is therefore not allowed access.
+프리 플라이트 요청에 대한 응답이 액세스 제어 검사를 통과하지 못합니다. 'Access-Control-Allow-Origin'헤더가 요청 된 자원에 없습니다. 따라서 'http : // localhost : 3000'은 허용되지 않습니다.
+```
