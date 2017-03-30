@@ -1,7 +1,5 @@
 @import url(https://cdn.rawgit.com/theeluwin/NotoSansKR-Hestia/master/stylesheets/NotoSansKR-Hestia.css);
-/*[v-cloak]{
-  display: none;
-}*/
+
 html{
   font-size: 10px;
   box-sizing: border-box;
@@ -86,7 +84,9 @@ input{
   margin-right: 0.3rem;
   top:2px;
 }
+
 /*회원가입 폼 모달*/
+
 .signup-box{
   background: #fff;
   color:#504d4f;
@@ -145,17 +145,17 @@ table{
 }
 .slogan{
   width: 600px;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 400;
   color: #fff;
   position: absolute;
   top:50%;
-  left: 30%;
+  left: 37%;
   transform: translateX(-50%) translateY(-50%);
   /*font-family: 'Nanum Pen Script';*/
 }
 
-/*mybook_start pape*/
+/*개인책장 초기 pape*/
 
 .bookadd-box{
   position: absolute;
@@ -183,7 +183,7 @@ table{
   cursor: pointer;
 }
 
-/*book-search page*/
+/*구글 책검색 page*/
 
 .book-search{
   width: 1000px;
@@ -235,13 +235,6 @@ table{
   transform: translateX(-50%);
   cursor: pointer;
 }
-
-
-
-
-
-
-
 
 /*footer*/
 
