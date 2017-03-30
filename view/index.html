@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SOOBOOK _ 수북</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/bulma.css">
   <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css"> -->
 
 </head>
@@ -14,15 +15,22 @@
     <video src="../asset/book.mp4" loop autoplay></video>
   <div class="header-wrap">
     <header>
-  <h1 class="logo"><a href="index.html">SOOBOOK</a></h1>
+  <h1 class="logo"><a href="index.html">
+    <img src="../asset/logo2.png" alt="soobook logo" width="200px"></a></h1>
   <div class="log-in">
   <h2 class="hidden">로그인</h2>
   <form action="#" >
-    <label for="id" class="hidden">아이디</label><input type="e-mail" id="id" placeholder="이메일 아이디">
-    <label for="password" class="hidden">패스워드</label><input type="password" id="password" placeholder="비밀번호">
+    <label for="id" class="hidden">아이디</label>
+    <input type="email" id="id" placeholder="이메일 아이디">
+    <label for="password" class="hidden">패스워드</label>
+    <input type="password" id="password" placeholder="비밀번호">
     <button type="submit" class="signin-btn"><a href="mybook_start.html">로그인</a></button>
   </form>
-  <button type="button" class="signup-btn">회원가입</button>
+  <div id="app">
+  <button @click="showModal=true" type="button" class="signup-btn">회원가입</button>
+    <app-modal v-if="showModal" @close="showModal = false"></app-modal>
+  </div>
+
   </div>
   </header>
   </div>
@@ -39,7 +47,114 @@
     <p class="copyright">@copyright soobook 2017</p>
   </footer>
   </div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+Vue.component('app-modal',{
+  template:`
+  <div class="modal is-active">
+  <div class="modal-background" @click="$emit('close')"></div>
+  <div class="modal-content">
+    <div class="signup-box">
+      <form id="join" action="https://soobook.devlim.net/api/user/signup/" method="post">
+       <table>
+         <tr><th scope="colgroup" colspan="2"><h2 class="signup-header">회원가입</h2></th></tr>
+       <tr><th><label for="sb-email">이메일</label></th>
+         <td><input name="user_id" type="email" id="sbEmail" placeholder="이메일 아이디" required></td></tr>
+       <tr><th><label for="sb-nickname">닉네임</label></th>
+         <td><input name="user_nickname" type="text" id="sbNickname" placeholder="닉네임" required></td></tr>
+        <tr><th><label for="sbPassword">비밀번호</label></th>
+           <td><input name="user_pw" type="password" id="sbPassword" placeholder="비밀번호" required></td></tr>
+           <tr><th><label for="sbPassword_conf">비밀번호 확인</label></th>
+              <td><input name="user_pwre" type="password" id="sbPassword_conf" placeholder="비밀번호확인" required></td></tr>
+        <tr><td scope="colgroup" colspan="2"><button name="join_btn" type="submit" class="signup_submit_btn" onclick="onClickJoin()">완료</button></td></tr>
+        </table>
+        </form>
+    </div>
+  </div>
+  <button class="modal-close" @click="$emit('close')"></button>
+</div>
+  `,
+
+});
+ var vm = new Vue({
+   el: '#app',
+   data:{
+     showModal: false
+   }
+ });
+
+//회원가입진행
+//폼 입력값 찾기
+// var signup = document.join_btn;
+// console.log(signup);
+// signup.onclick = onClickJoin();
 
 
+function onClickJoin(){
+  var joinForm = document.forms.join;
+  var userName = document.getElementById('sbEmail').value;
+  var nickName = document.getElementById('sbNickname').value;
+  var passWord = document.getElementById('sbPassword').value;
+  var passWord_re = document.getElementById('sbPassword_conf').value;
+  console.log(joinForm,userName,passWord,nickName,passWord_re);
+  if (passWord != passWord_re) {
+				alert("암호가 일치하지 않습니다");
+				joinForm.passWord.select();
+				return;
+			}
+
+  return requestJoinToServer(userName,nickName,passWord);
+}
+
+//서버요청
+function requestJoinToServer(username,nickname,password){
+  console.log(username,nickname,password);
+  //userInfo 객체 생성
+  var userInfo = new Object();
+
+  userInfo.username = username;
+  userInfo.nickname = nickname;
+  userInfo.password = password;
+
+  console.log(userInfo);
+
+  var xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
+			var url = "https://soobook.devlim.net/api/user/signup/";
+			xhr.open("POST", url,true);
+			xhr.setRequestHeader("Content-type", "application/json");
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === 4) {
+					console.log(this.responseText);
+				}
+
+				var json = JSON.parse(xhr.response);
+
+				if (xhr.status == 200) {
+					console.log(json.message + ", " + json.nickname)
+					alert(json.nickname + "님의 회원가입이 완료되었습니다!");
+
+				} else if (json == null) {
+					alert("회원가입에 실패했습니다... 응답코드 : " + xhr.statusText);
+				}
+				else {
+					alert("회원가입에 실패했습니다... 또르르.." + json.message);
+				}
+			}
+
+			var data = JSON.stringify(userInfo);
+			xhr.send(data);
+		}
+
+
+
+
+
+
+
+
+
+
+</script>
 </body>
 </html>
