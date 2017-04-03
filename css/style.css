@@ -15,8 +15,17 @@ body{
 }
 a{
   text-decoration: none;
-  color: #fff;
+  /*color: #fff;*/
 }
+ul,ol,li{
+  list-style: none;
+
+}
+ul,ol,li,figure{
+  margin:0;
+  padding: 0;
+}
+
 .logout:hover{
   border-bottom: 2px dotted #e6ac17;
 }
@@ -37,11 +46,12 @@ video {
   }
 .bg-wrap {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
-.wrap-1280{
-  width: 1000px;
+.wrap-1180{
+  width: 1180px;
   margin: 0 auto;
+  position: relative;
 }
 header{
   width: 1080px;
@@ -73,6 +83,9 @@ padding: 2rem;
   display: block;
   clear: both;
 }
+.log-in a{
+  color:#fff;
+}
 input{
   width: 14rem;
   height: 2.2rem;
@@ -84,6 +97,7 @@ input{
   margin-right: 0.3rem;
   top:2px;
 }
+
 
 /*회원가입 폼 모달*/
 
@@ -201,20 +215,28 @@ table{
   height: 33px;
 }
 .results{
-  /*width: 1000px;
-  margin: 0 auto;*/
-  /*border-bottom: 1px solid #bcb7be;*/
   height: 300px;
   y-overflow: scroll;
+  padding:30px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
+/*.results figcaption{
+text-align: center;
+font-size: 1.5rem;
+color:#8a8488;
+}*/
 .results img{
   margin: 10px;
+  width:100px;
+  height: 123.4px;
 }
 .picked-result{
   border: 1px solid rgb(200, 200, 200);
   border-radius: 5px;
   /*background: #dfdbdb;*/
-  height: 350px;
+  height: 250px;
 }
 .picked-result img {
   width: 100px;
@@ -225,7 +247,7 @@ table{
   width: 200px;
   height: 50px;
   border-radius: 5px;
-  background: #84a8c6;
+  background: #64b9c8;
   color:#fff;
   border-style: none;
   position: absolute;
@@ -236,10 +258,154 @@ table{
   cursor: pointer;
 }
 
+
+/*나의 책장 리스트*/
+.total-msg{
+  font-size: 2rem;
+}
+.total-msg span{
+  color: #f5225b;
+  font-weight: 600;
+}
+.view-option{
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 70px;
+  margin-bottom: 10px;
+}
+.view-option button {
+  background: transparent;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+}
+select{
+  width: 200px;
+  margin-right: 10px;
+  padding-left: 10px;
+  border-radius: 3px;
+}
+/*select option{
+  padding:5px;
+}*/
+.listbook-search{
+  position: absolute;
+  top: 0;
+  right: 60px;
+}
+.listbook-search button{
+  width: 30px;
+  height: 26px;
+  position: relative;
+  top:3px;
+  margin: -5px;
+  background: #64b9c8;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+}
+.booklist-edit{
+  position: absolute;
+  top:110px;
+  right:85px;
+}
+.booklist-edit button{
+  width:100px;
+  height: 30px;
+  background: #f41046;
+  color:#fff;
+  border-radius: 3px;
+  border-style: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.booklist-edit .plus-btn{
+  background: #64b9c8;
+}
+
+.book-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /*padding:20px;*/
+}
+.book-list li{
+  margin: 20px 25px;
+}
+
+.book-list figure{
+  text-align: center;
+  border: 1px solid #eee;
+  padding: 30px 50px;
+  border-radius: 3px;
+  height:280px;
+}
+.book-listfigure img{
+  height: 189px;
+}
+.book-list figure .writer{
+  font-size: 1.5rem;
+  margin:3px;
+  color:#84898a;
+
+}
+.book-list figure figcaption{
+  font-size: 1.8rem;
+  margin-top: 5px;
+}
+/*figure .star{
+  font-size: 2rem;
+  color:#f0ce1a;
+  margin: 5px 0;
+}*/
+.rating {
+		  unicode-bidi: bidi-override;
+		  direction: rtl;
+		  text-align: center;
+		}
+		.rating > span {
+		  display: inline-block;
+		  position: relative;
+		  width: 1.1em;
+      font-size: 2rem;
+      color:#f0ce1a;
+      margin: 5px 0;
+		}
+		.rating > span:hover,
+		.rating > span:hover ~ span {
+		  color: transparent;
+		}
+		.rating > span:hover:before,
+		.rating > span:hover ~ span:before {
+		   content: "\2605";
+		   position: absolute;
+		   left: 0;
+		   color: #f0ce1a;
+		}
+.pagination{
+  margin: 20px 0;
+}
+.wrap-1180 .view-more{
+  width:285px;
+  height: 50px;
+  margin-left:50%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  background: #64b9c8;
+  border-radius: 5px;
+  border-style: none;
+  color:#fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+}
+
 /*footer*/
 
 footer{
-  position: fixed;
+  /*position: fixed;*/
   bottom: 0;
   width: 100%;
   background: #0c0001;
