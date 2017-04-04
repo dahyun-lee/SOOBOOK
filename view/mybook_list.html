@@ -8,6 +8,12 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/bulma.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+
+
+
+</script>
+
 </head>
 <body>
   <div class="bg-wrap">
@@ -40,102 +46,67 @@
 <a href="book-search.html"><button class="plus-btn" type="button">+ 책추가</button></a>
 </div>
 <!-- 북리스트 시작 -->
+<div id="app">
   <ul class="book-list">
-    <li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=3h7ZCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-      <figcaption>사랑이라니 선영아</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li>
-    <li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=uB7ZCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-      <figcaption>스무살</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li><li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=hgSitTlE5eYC&printsec=frontcover&img=1&zoom=1&source=gbs_api" alt="">
-      <figcaption>낯선땅에 홀리다</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li><li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=m5uxBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-      <figcaption>꽃심</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li><li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=TeeFAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-      <figcaption>원더보이</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li>
-    <li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=3h7ZCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-      <figcaption>사랑이라니 선영아</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li>
-    <li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=uB7ZCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-      <figcaption>스무살</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li><li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=hgSitTlE5eYC&printsec=frontcover&img=1&zoom=1&source=gbs_api" alt="">
-      <figcaption>낯선땅에 홀리다</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li><li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=m5uxBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-      <figcaption>꽃심</figcaption>
-      <p class="writer">김연수</p>
-      <div class="rating">
-			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-		</div>
-      </figure>
-    </li><li>
-      <figure>
-      <img src="http://books.google.com/books/content?id=TeeFAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-      <figcaption>원더보이</figcaption>
-      <p class="writer">김연수</p>
+    <li v-for="book in books" @click="selectedBook(book)">
+    <!-- <li v-for="book in books" @click="showModal=true"> -->
+      <figure >
+      <img
+          :src="book.src"
+          :alt="book.title"
+          :title="book.title">
+      <figcaption>{{book.title}}</figcaption>
+      <p class="writer">{{book.author}}</p>
       <div class="rating">
 			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 		</div>
       </figure>
     </li>
   </ul>
+
+<div class="selected_area">
+<bookdetail-modal v-if="showModal" @close="showModal = false">
+
+  <div class="book-info">
+    <div>
+  <img :src="selected_book.src" :alt="selected_book.title">
+  </div>
+  <div class="info-text">
+  <h3>{{selected_book.title}}</h3>
+  <p>저자 : {{selected_book.author}}</p>
+  <div class="rating">
+  <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+</div>
+  </div>
+  <div class="review">
+    <form action="#">
+    <input type="text" placeholder="리뷰 제목을 써주세요">
+    <textarea name="name" rows="10" cols="65" placeholder="책을 읽고 느낀 리뷰를 자유롭게 써주세요"></textarea>
+    <button type="submit">리뷰 저장</button>
+    </form>
+</div>
+  <div class="book-phrase">
+    <input
+          v-model="newBookText"
+          @keyup.enter = "addNewText"
+          type="text"
+          placeholder="기억에 남는 책속 글귀를 입력해주세요.">
+    <button type="button" @click="addNewText">입력</button>
+    </div>
+    <ul class="phrase-area">
+      <book-text
+        v-for= "(text, index) in bookTexts"
+        v-bind:key= "text"
+        v-bind:title= "text"
+        v-on:remove= "bookTexts.splice(index, 1)"
+      ></book-text>
+
+    </ul>
+</bookdetail-modal>
+</div>
+  </div>
+
 
 <!-- 페이지네이션 -->
   <nav class="pagination is-centered is-medium">
@@ -176,6 +147,8 @@
   <p class="copyright">@copyright soobook 2017</p>
 </footer>
 
+<script src="https://unpkg.com/vue@2.1.6/dist/vue.js"></script>
+<script src="../js/vue-bookdetail.js"></script>
 
 </body>
 </html>

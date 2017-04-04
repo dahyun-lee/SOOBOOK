@@ -17,7 +17,8 @@
       success: function(data){
         for(var i=0; i< data.items.length; i++){
           // results.innerHTML += "<h2>" + data.items[i].volumeInfo.title +"</h2>"
-          results.innerHTML += "<img src=" + data.items[i].volumeInfo.imageLinks.thumbnail + " id= "+ data.items[i].id + " width=\"100px\" height=\"123.4px\" draggable=\"true\" ondragstart=\"drag(this, event)\">"
+          results.innerHTML += "<img src=" + data.items[i].volumeInfo.imageLinks.thumbnail +
+          " id= "+ data.items[i].id + " title=" + data.items[i].volumeInfo.title +" class=\"save-book\" draggable=\"true\" ondragstart=\"drag(this, event)\">"
         }
       },
       type: 'GET'
@@ -63,8 +64,10 @@ book.dataTransfer.setData('Text', target.id);
 
 function drop(target, book) {		//드롭시 호출 할 함수
 var id = book.dataTransfer.getData('Text');
-target.appendChild(document.getElementById(id));
+var books = target.appendChild(document.getElementById(id));
 // book.preventDefault();
 console.log('이동된 책 아이디:',id);
-return target.id;
+selected_booklist.push({"id":id,"cover":book});
 }
+
+var selected_booklist=[];
