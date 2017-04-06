@@ -7,7 +7,7 @@ Vue.component('app-modal',{
   <div class="modal-background" @click="$emit('close')"></div>
   <div class="modal-content">
     <div class="signup-box">
-      <form id="join" action="https://soobook.devlim.net/api/user/signup/" method="post">
+      <form id="join" method="post">
        <table>
          <tr><th scope="colgroup" colspan="2"><h2 class="signup-header">회원가입</h2></th></tr>
        <tr><th><label for="sb-email">이메일</label></th>

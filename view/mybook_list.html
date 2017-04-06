@@ -81,9 +81,18 @@
   </div>
   <div class="review">
     <form action="#">
-    <input type="text" placeholder="리뷰 제목을 써주세요">
-    <textarea name="name" rows="10" cols="65" placeholder="책을 읽고 느낀 리뷰를 자유롭게 써주세요"></textarea>
-    <button type="submit">리뷰 저장</button>
+    <input
+    v-model="newReviewTitle"
+    type="text"
+    placeholder="리뷰 제목을 써주세요">
+    <textarea
+    name="name"
+    rows="10"
+    cols="65"
+    placeholder="책을 읽고 느낀 리뷰를 자유롭게 써주세요"
+    v-model="newReviewContent"
+    ></textarea>
+    <button type="button" @click="addnewReview">리뷰 저장</button>
     </form>
 </div>
   <div class="book-phrase">
@@ -96,12 +105,11 @@
     </div>
     <ul class="phrase-area">
       <book-text
-        v-for= "(text, index) in bookTexts"
-        v-bind:key= "text"
-        v-bind:title= "text"
-        v-on:remove= "bookTexts.splice(index, 1)"
+       v-for=" text in selected_book.bookTexts"
+      :key= "text"
+      :text= "text"
+      @remove= "selected_book.bookTexts.splice(index,1)"
       ></book-text>
-
     </ul>
 </bookdetail-modal>
 </div>

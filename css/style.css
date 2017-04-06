@@ -40,8 +40,6 @@ textarea{
   border-bottom: 2px dotted #e6ac17;
 }
 button{
-
-
   border-style: none;
   border-radius: 2px;
   cursor: pointer;
@@ -120,7 +118,7 @@ input{
   color:#504d4f;
   padding: 30px;
   text-align: center;
-  width: 400px;
+  width: 600px;
   margin: 0 auto;
   border-radius: 5px;
 
@@ -133,6 +131,7 @@ input{
 }
 table{
   margin: 0 auto;
+  width:80%;
 }
 .signup-box label{
   display: block;
@@ -142,6 +141,7 @@ table{
 }
 .signup-box input {
   text-align: left;
+  width: 250px;
 }
 
 .signin-btn,.signup-btn,.search-btn,.signup_submit_btn{
@@ -227,7 +227,7 @@ table{
   height: 31px;
 }
 .results{
-  height: 300px;
+  height: 340px;
   y-overflow: scroll;
   padding:30px;
   display: flex;
@@ -461,11 +461,12 @@ select{
   top:3px;
 }
 .phrase-area{
-  padding-top:20px;
+  padding:20px;
   width:100%;
-  height: auto;
+  height: 150px;
+  overflow:auto;
   margin: 0 auto;
-  /*background: #eee;*/
+  background: #eee;
 }
 .phrase-area li{
   border-bottom: 1px dotted #686a67;
