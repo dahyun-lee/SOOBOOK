@@ -1,5 +1,7 @@
 @import url(https://cdn.rawgit.com/theeluwin/NotoSansKR-Hestia/master/stylesheets/NotoSansKR-Hestia.css);
-
+[v-cloak] {
+  display: none;
+}
 *{
   box-sizing: border-box;
 }
@@ -429,10 +431,28 @@ select{
   margin-bottom: 10px;
   border-bottom: 1px dashed #eee;
 }
+
 .review input{
   margin-bottom: 10px;
   width:100%;
   }
+.review-title{
+  font-size: 1.8rem;
+  border-bottom: 1px solid #eee;
+  color:#0d2a4d;
+  padding-bottom:10px;
+}
+.review-content{
+  font-size: 1.2rem;
+}
+.review-text{
+  height:265px;
+  overflow: auto;
+  /*border: 1px solid #eee;*/
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom:10px;
+}
 .review textarea{
   width:100%;
   border-radius: 5px;
@@ -445,6 +465,9 @@ select{
   width:100%;
   height: 40px;
   margin-bottom: 20px;
+}
+.review .edit-btn,.review .delete-btn{
+  width:49.5%;
 }
 
 .book-phrase input{

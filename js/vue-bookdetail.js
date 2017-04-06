@@ -7,6 +7,8 @@ var model = {
       bookTexts:[
         '[ p. 178 ] 심장이 하늘에서 땅까지 아찔한 진자운동을 계속하였다. 첫사랑이었다.',
       ],
+      newReviewTitle:'',
+      newReviewContent:'',
       reviewTitle:'',
       reviewContent:''
     },
@@ -17,6 +19,8 @@ var model = {
       bookTexts:[
         '[ p. 178 ] 그렇다 그건 사랑이었다....ㅋㅋ',
       ],
+      newReviewTitle:'',
+      newReviewContent:'',
       reviewTitle:'',
       reviewContent:''
     },
@@ -27,6 +31,8 @@ var model = {
       bookTexts:[
         '낯선땅에 홀렸다..그렇다',
       ],
+      newReviewTitle:'',
+      newReviewContent:'',
       reviewTitle:'',
       reviewContent:''
     },
@@ -37,6 +43,8 @@ var model = {
       bookTexts:[
         '꽃심...아 좋다',
       ],
+      newReviewTitle:'',
+      newReviewContent:'',
       reviewTitle:'',
       reviewContent:''
     },
@@ -47,6 +55,8 @@ var model = {
       bookTexts:[
         '그는 원더보이였다',
       ],
+      newReviewTitle:'',
+      newReviewContent:'',
       reviewTitle:'',
       reviewContent:''
     }
@@ -58,11 +68,14 @@ var model = {
     bookTexts:'',
     reviewTitle:'',
     reviewContent:'',
+    newReviewTitle:'',
+    newReviewContent:'',
   },
   showModal:false,
   newBookText: '',
-  newReviewTitle:'',
-  newReviewContent:'',
+
+  show : true,
+
 
 };
 
@@ -99,6 +112,8 @@ Vue.component('book-text',{
       selectedBook: function(book) {
         this.selected_book = book;
         return this.showModal = true;
+
+
       },
       encodingURI: function(link) {
       return window.encodeURI(link);
@@ -109,8 +124,17 @@ Vue.component('book-text',{
         // this.selected_book.bookTexts='';
     },
     addnewReview:function(){
-      this.selected_book.reviewTitle = this.newReviewTitle.value;
-      this.selected_book.reviewContent = this.newReviewContent.value;
-    }
+      this.selected_book.reviewTitle = this.selected_book.newReviewTitle;
+      this.selected_book.reviewContent = this.selected_book.newReviewContent;
+      this.show = !true;
+    },
+    deleteReview:function(){
+      this.selected_book.reviewTitle='';
+      this.selected_book.reviewContent='';
+      this.selected_book.newReviewTitle='';
+      this.selected_book.newReviewContent='';
+
+    },
+
   }
 });
