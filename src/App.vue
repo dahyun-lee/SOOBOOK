@@ -430,6 +430,8 @@ color:#8a8488;
     opacity: 0;
   }
   }*/
+
+
 /*유틸리티바*/
 .utility{
   background: #fff;
@@ -467,29 +469,7 @@ color:#8a8488;
     margin: 5px;
     cursor: pointer;
 }
-/*.view-option{
-  display: flex;
-  justify-content: flex-start;
-  padding: 10px;
-  margin-left: 10px;
-  margin-top: 70px;
-  margin-bottom: 10px;
-}
-.view-option button {
-  background: transparent;
-  border: none;
-  margin: 5px;
-  cursor: pointer;
-}
-select{
-  width: 200px;
-  margin-right: 10px;
-  padding-left: 10px;
-  border-radius: 3px;
-}*/
-/*select option{
-  padding:5px;
-}*/
+
 .listbook-search{
   margin-right: 7px;
 }
@@ -522,6 +502,130 @@ select{
 .booklist-edit .plus-btn{
   background: #64b9c8;
 }
+
+/*별점*/
+.rating {
+		  unicode-bidi: bidi-override;
+		  direction: rtl;
+		  text-align: center;
+		}
+		.rating > span {
+		  display: inline-block;
+		  position: relative;
+		  width: 1.1em;
+      font-size: 2rem;
+      color:#f0ce1a;
+      margin: 5px 0;
+		}
+		.rating > span:hover,
+		.rating > span:hover ~ span {
+		  color: transparent;
+		}
+		.rating > span:hover:before,
+		.rating > span:hover ~ span:before {
+		   content: "\2605";
+		   position: absolute;
+		   left: 0;
+		   color: #f0ce1a;
+		}
+
+
+/*책정보 디테일 모달*/
+
+.selected_area{
+  padding:50px 50px 0;
+}
+.books-info{
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  color:#555355;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+.book-info .rating{
+  text-align: left;
+}
+
+.info-text{
+  margin-left: 30px;
+}
+.review{
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #eee;
+}
+
+.review input{
+  margin-bottom: 10px;
+  width:100%;
+  }
+.review-title{
+  font-size: 1.8rem;
+  border-bottom: 1px solid #eee;
+  color:#0d2a4d;
+  padding-bottom:10px;
+}
+.review-content{
+  font-size: 1.2rem;
+}
+.review-text{
+  height:265px;
+  overflow: auto;
+  /*border: 1px solid #eee;*/
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom:10px;
+}
+.review textarea{
+  width:100%;
+  border-radius: 5px;
+  padding:20px;
+  box-sizing: border-box;
+}
+.review button{
+  background: #64b9c8;
+  color: #fff;
+  width:100%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+.review .edit-btn,.review .delete-btn{
+  width:49.5%;
+}
+
+.book-phrase input{
+
+  margin-bottom: 10px;
+  width:92%;
+}
+.book-phrase button{
+  background: #64b9c8;
+  color: #fff;
+  height:25px;
+  width:40px;
+  position: relative;
+  top:3px;
+}
+.phrase-area{
+  padding:20px;
+  width:100%;
+  height: 150px;
+  overflow:auto;
+  margin: 0 auto;
+  background: #eee;
+}
+.phrase-area li{
+  border-bottom: 1px dotted #686a67;
+  display: block;
+  font-size: 1.3rem;
+  padding: 5px 10px;
+  color: #535455;
+  font-weight: 400;
+}
+
 
 
   footer{
