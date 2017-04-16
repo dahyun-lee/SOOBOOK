@@ -188,7 +188,8 @@ export default {
 </script>
 <style>
 
-@media screen and (min-width: 960px) {
+
+
 
 
 /*메인페이지2*/
@@ -299,7 +300,7 @@ export default {
 }
 
 
-}
+
 
 
 </style>

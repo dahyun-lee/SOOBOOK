@@ -11,8 +11,7 @@
     <div class="utility">
     <div class="utility-inner">
       <p class="total-msg">Total 등록 책 : <span>103권</span></p>
-
-        <div>
+        <div class="btn-wrap">
           <router-link to="/mybook"><button type="button" class="view-btn"><i class="fa fa-th fa-2x" aria-hidden="true" ></i></button></router-link>
           <router-link to="/mybook/listview"><button type="button" class="view-btn"><i class="fa fa-th-list fa-2x" aria-hidden="true"></i></button></router-link>
         </div>
@@ -24,8 +23,6 @@
 
     </div>
     <div class="wrap-1200">
-
-
       <transition name = "slide" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -41,7 +38,7 @@ export default {
   name: "myBook",
   data: function data() {
     return {
-    }  
+    }
   },
   mounted () {
     var util = jQuery('.utility');
@@ -50,9 +47,11 @@ export default {
       var position = jQuery(this).scrollTop();
       var hasFixed = util.hasClass('fixed');
       if(position >= utilOffsetTop && !hasFixed) {
+      // if(position >= 200) {
         util.addClass('fixed');
       }
       if (position < utilOffsetTop && hasFixed) {
+      // if(position < 200) {
         util.removeClass('fixed');
       }
     });

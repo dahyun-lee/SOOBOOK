@@ -1,11 +1,14 @@
 <template>
 
     <div class="my-bookshelf" >
+      <!-- <div class="wrap-1200" > -->
               <ul class="booklist1" v-for="item in items">
                   <li class ="book-coverlist" @click="selectedBook(item)">
+                    <div class="book-wrap">
                     <router-link to="/bookdetail" tag="a" >
                       <div class="img-box">
-                          <img :src="item.book.cover_thumbnail" alt="" width="152px" height="190px" class="booklist-img">
+                          <!-- <img :src="item.book.cover_thumbnail" alt="" width="152px" height="190px" class="booklist-img"> -->
+                          <img :src="item.book.cover_thumbnail" alt="" class="booklist-img">
                       </div>
                       </router-link>
                       <div class="book-info">
@@ -38,7 +41,7 @@
                       <div class="delete-field">
 
                       </div>
-
+                    </div>
                   </li>
 
               </ul>
@@ -73,7 +76,58 @@ export default {
       mark:{
         content:["안녕" ],
             },
-    }
+    },
+    {
+      "book":{
+      id: "x_5KAQAAIAAJ",
+      title: "개",
+      author:"김훈",
+      cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    },
+     comment:{
+       content:" dkfdjkfdkj",
+     },
+     star:{
+       content:" 5",
+     },
+     mark:{
+       content:["안녕" ],
+           },
+   },
+    {
+      "book":{
+      id: "x_5KAQAAIAAJ",
+      title: "개",
+      author:"김훈",
+      cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    },
+     comment:{
+       content:" dkfdjkfdkj",
+     },
+     star:{
+       content:" 5",
+     },
+     mark:{
+       content:["안녕" ],
+           }
+   },
+   {
+     "book":{
+     id: "x_5KAQAAIAAJ",
+     title: "개",
+     author:"김훈",
+     cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+   },
+    comment:{
+      content:" dkfdjkfdkj",
+    },
+    star:{
+      content:" 5",
+    },
+    mark:{
+      content:["안녕" ],
+          }
+  },
           ],
   selected_book: {
       title: '',
@@ -103,48 +157,52 @@ export default {
 .my-bookshelf {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
-  /*align-items: center;*/
+  justify-content: center;
   margin: 0 auto;
   margin-top: 50px;
-  /*padding: 0 180px;*/
   width: 100%;
-  /*height: */
-  /*background: #f9f9f9;
-  border-top: 1px solid #d7d0d0;*/
-  /*border-radius: 10px;*/
-  /*box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);*/
 }
 
 .booklist1 {
-  /*margin: 30px 0 30px 30px;*/
-  display: flex;
-  flex-flow: column wrap;
-  /*justify-content: center;*/
-  /*align-items: top;*/
+  /*display: flex;
+  flex-flow: column wrap;*/
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  margin: 50px 20px;
-  position: relative;
+  margin: 50px 80px 50px 0;
+  /*position: relative;*/
   width: 202px;
-}
-.booklist1:hover {
-  transform: translateY(-5px);
-  transition: 0.5s ease-in;
+  height:345px;
+  /*width: 22%;*/
 }
 .book-coverlist{
   margin:0;
   padding:0;
+  width:100%;
 }
+/*.booklist1:last-child{
+  margin-right: 0;
+}
+.booklist1:first-child{
+  margin-left:20px;
+}*/
+.booklist1:hover {
+  transform: translateY(-5px);
+  transition: 0.5s ease-in;
+}
+
 .img-box {
-  padding-top: 20px;
+  width:100%;
+  padding:20px 20px 0;
+  /*padding-top: 20px;*/
   display: flex;
   justify-content: center;
   background: #ececec
 }
 .booklist-img {
   align-items: center;
+  /*width:152px;
+  height:190px;*/
 }
 
 .book-info {
@@ -152,13 +210,11 @@ export default {
   color: #131418;
 }
 
-h3 {
-  margin: 0;
+
+.title {
   margin-top: 10px;
   height: 23px;
   display: block;
-}
-.title {
   font-size: 13px;
   text-align: center;
   padding-bottom: 2px;
