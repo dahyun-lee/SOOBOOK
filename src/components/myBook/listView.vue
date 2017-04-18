@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-wrap">
-    <div class="wrap-1200">
+  <!-- <div class="bg-wrap"> -->
+    <!-- <div class="wrap-1200"> -->
       <ul class="book-list">
             <li
             @click="selectedBook(item)"
@@ -28,8 +28,8 @@
 
             </li>
           </ul>
-    </div>
-  </div>
+    <!-- </div> -->
+  <!-- </div> -->
 </template>
 <script>
 export default {
@@ -215,18 +215,20 @@ export default {
   width: 45%;
   display: flex;
   margin: 30px 0px;
-  padding: 5px;
+  padding: 10px;
   background: white;
   border-radius: 1px;
   box-shadow: 2px 1px 1px 0px lightgray;
   position: relative;
-  border-left: 20px solid #ececec;
+  /*border-left: 10px solid #ececec;*/
+  border-left: 7px solid #ececec;
   /*border-left: 30px solid red;*/
 }
 .fa-ellipsis-v{
   position: absolute;
   right: 10px;
-  color: #ccc;
+  font-size: 2rem;
+  color: rgba(94, 87, 60, 0.6);
 }
 .bookListL{
   /*position: relative;*/

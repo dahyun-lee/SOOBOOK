@@ -5,54 +5,75 @@
     <form id="join" method="post">
 
        <h2 class="signup-header">회원가입</h2>
-     <label for="sb-email">이메일</label></th>
-      <input type="email" id="sbEmail" placeholder="이메일 아이디" required>
-     <label for="sb-nickname">닉네임</label></th>
-      <input type="text" id="sbNickname" placeholder="닉네임" required>
-      <label for="sbPassword">비밀번호</label></th>
-        <input type="password" id="sbPassword" placeholder="비밀번호" required>
-         <label for="sbPassword_conf">비밀번호 확인</label></th>
-           <input type="password" id="sbPassword_conf" placeholder="비밀번호확인" required>
-      <button type="submit" class="signup_submit_btn" onclick="joinValidate()">완료</button>
+     <label for="sb-email">이메일</label>
+      <input type="email" id="sb-email" placeholder="이메일 아이디" required>
+     <label for="sb-nickname">닉네임</label>
+      <input type="text" id="sb-nickname" placeholder="닉네임" required>
+      <label for="sb-password">비밀번호</label>
+        <input type="password" id="sb-password" placeholder="비밀번호 6자리 이상" required>
+         <label for="sb-Password-conf">비밀번호 확인</label>
+           <input type="password" id="sb-password-conf" placeholder="비밀번호 확인" @keyup.enter="clickedSignUpButton" required>
+      <button type="button" class="signup_submit_btn" @click="clickedSignUpButton">완료</button>
       </form>
   </div>
     </div>
       </div>
 
 
-
-
-  <!-- <div class="modal is-active">
-  <router-link to="/"><div class="modal-background"></div></router-link>
-  <div class="modal-content">
-    <div class="signup-box">
-      <form id="join" method="post">
-       <table>
-         <tr><th scope="colgroup" colspan="2"><h2 class="signup-header">회원가입</h2></th></tr>
-       <tr><th><label for="sb-email">이메일</label></th>
-         <td><input type="email" id="sbEmail" placeholder="이메일 아이디" required></td></tr>
-       <tr><th><label for="sb-nickname">닉네임</label></th>
-         <td><input type="text" id="sbNickname" placeholder="닉네임" required></td></tr>
-        <tr><th><label for="sbPassword">비밀번호</label></th>
-           <td><input type="password" id="sbPassword" placeholder="비밀번호" required></td></tr>
-           <tr><th><label for="sbPassword_conf">비밀번호 확인</label></th>
-              <td><input type="password" id="sbPassword_conf" placeholder="비밀번호확인" required></td></tr>
-        <tr><td scope="colgroup" colspan="2"><button type="submit" class="signup_submit_btn" onclick="joinValidate()">완료</button></td></tr>
-        </table>
-      </form>
-    </div>
-  </div>
-  <router-link to="/"><button class="modal-close"></button></router-link>
-</div> -->
 </template>
 <script>
 export default {
-  name: "",
-  data: function data() {
-    return {
-        showModal: false
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        // input value값을 user_data 객체로 저장
+        clickedSignUpButton(){
+            var joinForm = document.forms.join;
+            var new_id = document.querySelector('#sb-email').value;
+            var new_pw = document.querySelector('#sb-password').value;
+            var new_pw_re = document.querySelector('#sb-password-conf').value;
+            var new_nickname = document.querySelector('#sb-nickname').value;
+            var user_data = {
+                username: new_id,
+                password: new_pw,
+                nickname: new_nickname,
+            };
+            if (new_pw != new_pw_re) {
+				alert("암호가 일치하지 않습니다");
+				// joinForm.passWord.select();
+				// return;
+			       }
+            if (new_pw.length < 6 || new_pw_re.length < 6) {
+ 				alert("암호는 6자리 이상 입력해주세요");
+ 			// 	joinForm.passWord.select();
+ 				// return;
+ 			       }
+
+            // console.log(user_input);
+            this.SignUp(user_data);
+          },
+        // 저장된 객체값 받아오기
+        SignUp(user_data){
+        	// jQuery ajax를 이용하여 SOOBOOK API 가져오기
+        	$.ajax({
+        	  url: 'https://soobook.devlim.net/api/user/signup/',
+        	  type: 'POST',
+        	  dataType: 'json',
+        	  data: user_data
+        	})
+        	.done(function(response) {
+        	  console.log(response);
+              alert('가입이 완료되었습니다.')
+              location.href= "/signin"
+        	})
+        	.fail(function(response) {
+        	  console.log(response);
+        	});
+        },
     }
-  }
 }
 </script>
 <style>

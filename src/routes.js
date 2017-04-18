@@ -23,7 +23,7 @@ export const routes = [
     let key = window.localStorage.getItem('key');
       // to.matched[0].instances.header = new Header;
     if(key) {
-      console.log(key);
+      console.log('로그인중입니다');
       next({path: '/mybook'});
     } else {
       next();
@@ -48,8 +48,6 @@ export const routes = [
 components:{
   default: myBook,
   header: loginHeader,
-  // searchBar : searchBar,
-  // utility: utility,
   footer: Footer
 },
 children:[

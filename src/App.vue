@@ -50,6 +50,7 @@ body{
 font-family: "Noto Sans KR", sans-serif;
 margin: 0;
 padding: 0;
+
 }
 .hidden{
 position:absolute;
@@ -99,12 +100,13 @@ cursor: pointer;
 .bg-wrap {
 width: 100%;
 min-height: 100vh;
-background: #f3f3f3;
+/*background: #fbf6ec;*/
+background: url('assets/pattern.jpg')
 }
 .main-bg{
 width: 100%;
 min-height: 100vh;
-background-image: url('assets/reading1.jpg');
+background-image: url('assets/main1.jpg');
 background-position: center;
 background-size: cover;
 }
@@ -117,21 +119,21 @@ to{
 }
 }*/
 .wrap-1200{
-width: 1200px;
+width: 1150px;
 margin: 0 auto;
 position: relative;
-background: #f3f3f3;
+/*background: #fbf6ec;*/
 }
 header{
-width: 1200px;
+width: 1150px;
 margin: 0 auto;
 /*padding-bottom: 15px;*/
-
 }
 
 .header-wrap,.login-headerwrap{
-background: hsla(200, 2%, 20%, 0.6);
-border: 1px solid hsla(0, 0%, 100%, 0.1);
+/*backdrop-filter:blur(10px);*/
+background: hsla(200, 2%, 20%, 0.1);
+border-bottom: 1px solid hsla(0, 0%, 100%, 0.5);
 /*box-shadow: 5px 5px 5px #fff;*/
 display: flex;
 flex-direction: row;
@@ -140,8 +142,9 @@ padding:0.8rem 0;
 justify-content: space-between;
 }
 .login-headerwrap{
-background: #131418;
+background: hsla(0, 0%, 5%, 0.9);
 color: #fff;
+border-bottom: 1px solid hsla(0, 3%, 83%, 0.16);
 }
 .logo{
   display: inline;
@@ -160,6 +163,11 @@ margin-right: 7px;
 
 .log-in a{
 color:#fff;
+}
+.log-out{
+  background: none;
+  color:#fff;
+  font-size: 1.2rem;
 }
 input{
 width: 14rem;
@@ -256,15 +264,21 @@ top:-0.7rem;
 /*float: right;*/
 }
 .slogan{
-width: 600px;
-font-size: 1.7rem;
-font-weight: 400;
+font-family: 'Iropke Batang', serif;
+/*text-shadow: 1px 1px 3px #bdc2bf;*/
+text-align: center;
+font-size: 2rem;
+line-height: 1.5;
+/*font-weight: bold;*/
 color: #fff;
 position: absolute;
-top:50%;
-left: 37%;
+top:40%;
+left: 50%;
 transform: translateX(-50%) translateY(-50%);
 /*font-family: 'Nanum Pen Script';*/
+}
+.slogan span{
+  font-size: 1.2rem;
 }
 
 /*책장 첫화면*/
@@ -533,7 +547,8 @@ color:#8a8488;
 /*책정보 디테일 모달*/
 
 .selected_area{
-  padding:50px 50px 0;
+  padding:50px 100px 0;
+  position: relative;
 }
 .books-info{
   display: flex;
@@ -569,7 +584,9 @@ color:#8a8488;
   padding-bottom:10px;
 }
 .review-content{
-  font-size: 1.2rem;
+  font-size: 1rem;
+  color:#686a67;
+
 }
 .review-text{
   height:265px;
@@ -592,8 +609,18 @@ color:#8a8488;
   height: 40px;
   margin-bottom: 20px;
 }
+.edit-set{
+ margin-left: 90%;
+ display: flex;
+
+}
 .review .edit-btn,.review .delete-btn{
-  width:49.5%;
+  width:40px;
+  border-radius: 40px;
+  margin-right: 5px;
+}
+.review .delete-btn{
+  background: #f61e45;
 }
 
 .book-phrase input{
@@ -604,17 +631,18 @@ color:#8a8488;
   background: #64b9c8;
   color: #fff;
   height:38px;
-  width:40px;
+  width:60px;
   position: relative;
   top:3px;
 }
 .phrase-area{
-  padding:20px;
+  padding:10px;
   width:100%;
   height: 150px;
   overflow:auto;
   margin: 0 auto;
-  background: #eee;
+  background: #f4efe6;
+  border-radius: 3px;
 }
 .phrase-area li{
   border-bottom: 1px dotted #686a67;
@@ -623,6 +651,8 @@ color:#8a8488;
   padding: 5px 10px;
   color: #535455;
   font-weight: 400;
+  margin: 0;
+  font-size: 1rem;
 }
   footer{
     position: fixed;
@@ -642,6 +672,13 @@ color:#8a8488;
     max-width:100%;
     /*min-width:300px;*/
   }
+  .slogan{
+    margin:0;
+    font-size: 1rem;
+  }
+  .slogan span{
+    font-size: 0.8rem;
+  }
   .logo img{
   width:100px;
   margin-top: 12px;
@@ -655,7 +692,7 @@ color:#8a8488;
     display: none;
   }
   input{
-    padding-left: 0.2rem;
+    padding-left: 0.4rem;
   }
   .utility{
     height:60px;
@@ -831,6 +868,9 @@ color:#8a8488;
   }
   .rating span{
     font-size: 1.5rem;
+  }
+  .edit-set{
+    margin-left: 70%;
   }
   .book-phrase input{
     margin-bottom: 10px;

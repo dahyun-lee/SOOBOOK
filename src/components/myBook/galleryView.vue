@@ -201,8 +201,8 @@ export default {
 }
 .booklist-img {
   align-items: center;
-  /*width:152px;
-  height:190px;*/
+  width:152px;
+  height:190px;
 }
 
 .book-info {

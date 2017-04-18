@@ -41,8 +41,11 @@
         <!--버튼  -->
 
         <button type="button" v-on:click="addnewReview" v-if="show" >저장하기</button>
-        <button v-if="!show" class="edit-btn" type="button" @click="show=true">수정하기</button>
-        <button v-if="!show" class="delete-btn" type="button" @click="deleteReview">삭제</button>
+        <div class="edit-set">
+          <button v-if="!show" class="edit-btn" type="button" @click="show=true">수정</button>
+          <button v-if="!show" class="delete-btn" type="button" @click="deleteReview">삭제</button>
+        </div>
+
         </form>
     </div>
     <!-- 책속글귀 부분 -->
