@@ -1,7 +1,7 @@
 <template>
   <!-- <div class="main-bg"> -->
   <div>
-    <router-view name="header"></router-view>
+    <!-- <router-view name="header"></router-view> -->
 
     <p class="slogan">
       문득 아름다운 것과 마주쳤을 때,<br>

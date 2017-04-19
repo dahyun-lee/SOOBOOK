@@ -6,40 +6,41 @@ import App from './App.vue'
 
 Vue.use(VueRouter)
 // Vue.use(Vuex)
-
+//
 // const store = new Vuex.Store({
 //   state: {
-//     books: [
-//      {
-//        "book":{
-//        id: "x_5KAQAAIAAJ",
-//        title: "개",
-//        author:"김훈",
-//        cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-//      },
-//       comment:{
-//         content: " ",
-//       },
-//       star:{
-//         content:" 5",
-//       },
-//       mark:{
-//         content:[ "dfdfdf"],
-//       },
-//     }
-//    ],
-//    selected_book: {
-//        title: '',
-//        author: '',
-//        cover_thumbnail:'',
-//        mark:'',
-//        comment:'',
-//
-//     },
+//     items:[],
 //   },
 //   mutations: {
-//     // selectedBook(state) {
-//     //   state.selected_book = state.books;
+//     showMyBooks(){
+//       var _this = this;
+//       var items = this.items;
+//       var token = 'Token ' + getCookie('SoobookToken');
+//       // console.log('book_id:',this.book_id);
+//       $.ajax({
+//         url: "https://soobook.devlim.net/api/book/mybook/",
+//         dataType: "	json",
+//         type: "GET",
+//         headers: {
+//           Authorization: token,
+//         },
+//         success: function(data) {
+//           // var mybooks = data.results.book;
+//           console.log('성공 :', data);
+//           console.log('책리스트 :', data.results);
+//           for(var i = 0; i< data.results.length; i++){
+//           console.log(data.results[i]);
+//           items.push(data.results[i]);
+//         }
+//       },
+//
+//         error: function(error){
+//           console.error('실패..:', error);
+//           console.log('data:',data);
+//         }
+//       })
+//     },
+//
 //   }
 // });
 
@@ -52,6 +53,7 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  // store,
 
   render: h => h(App)
 })

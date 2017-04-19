@@ -1,155 +1,107 @@
-<template>
+v-text=""<template>
+<div>
 
-    <div class="my-bookshelf" >
+<!-- <button type="button" @click="showMyBooks">내 책 보여줘</button> -->
+    <div class="my-bookshelf">
       <!-- <div class="wrap-1200" > -->
-              <ul class="booklist1" v-for="item in items">
-                  <li class ="book-coverlist" @click="selectedBook(item)">
-                    <div class="book-wrap">
-                    <router-link to="/bookdetail" tag="a" >
-                      <div class="img-box">
-                          <!-- <img :src="item.book.cover_thumbnail" alt="" width="152px" height="190px" class="booklist-img"> -->
-                          <img :src="item.book.cover_thumbnail" alt="" class="booklist-img">
-                      </div>
-                      </router-link>
-                      <div class="book-info">
-                          <h3 class="title">{{item.book.title}}</h3>
-                          <p class="author">{{item.book.author}}</p>
-                          <div class="line"></div>
-                      </div>
-                      <div class="ratingControl">
-                          <input type="radio" name="rating" value="5">
-                          <label class="ratingControl-stars ratingControl-stars--5" for="rating-5">5</label>
-                          <input type="radio" name="rating" value="4.5">
-                          <label class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half" for="rating-45">45</label>
-                          <input type="radio" name="rating" value="4">
-                          <label class="ratingControl-stars ratingControl-stars--4" for="rating-4">4</label>
-                          <input type="radio" name="rating" value="3.5">
-                          <label class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half" for="rating-35">35</label>
-                          <input type="radio" name="rating" value="3">
-                          <label class="ratingControl-stars ratingControl-stars--3" for="rating-3">3</label>
-                          <input type="radio" name="rating" value="2.5">
-                          <label class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half" for="rating-25">25</label>
-                          <input type="radio" name="rating" value="2">
-                          <label class="ratingControl-stars ratingControl-stars--2" for="rating-2">2</label>
-                          <input type="radio" name="rating" value="1.5">
-                          <label class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half" for="rating-15">15</label>
-                          <input type="radio" name="rating" value="1">
-                          <label class="ratingControl-stars ratingControl-stars--1" for="rating-1">1</label>
-                          <input type="radio" name="rating" value="0.5">
-                          <label class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half" for="rating-05">05</label>
-                      </div>
-                      <div class="delete-field">
 
-                      </div>
-                    </div>
-                  </li>
+      <ul class="booklist1" v-for="item in items">
+          <li class ="book-coverlist" @click="selectedBook(item)">
+            <div class="book-wrap">
+            <router-link :to="{name:'detail', params:{id: item.book.id}}" tag="a" >
+              <div class="img-box">
+                  <!-- <img :src="item.book.cover_thumbnail" alt="" width="152px" height="190px" class="booklist-img"> -->
+                  <img :src="item.book.cover_thumbnail" alt="" class="booklist-img">
+              </div>
+              </router-link>
+              <div class="book-info">
+                  <h3 class="title">{{item.book.title}}</h3>
+                  <p class="author">{{item.book.author}}</p>
+                  <div class="line"></div>
+              </div>
+              <div class="ratingControl">
+                  <input type="radio" name="rating" value="5">
+                  <label class="ratingControl-stars ratingControl-stars--5" for="rating-5">5</label>
+                  <input type="radio" name="rating" value="4.5">
+                  <label class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half" for="rating-45">45</label>
+                  <input type="radio" name="rating" value="4">
+                  <label class="ratingControl-stars ratingControl-stars--4" for="rating-4">4</label>
+                  <input type="radio" name="rating" value="3.5">
+                  <label class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half" for="rating-35">35</label>
+                  <input type="radio" name="rating" value="3">
+                  <label class="ratingControl-stars ratingControl-stars--3" for="rating-3">3</label>
+                  <input type="radio" name="rating" value="2.5">
+                  <label class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half" for="rating-25">25</label>
+                  <input type="radio" name="rating" value="2">
+                  <label class="ratingControl-stars ratingControl-stars--2" for="rating-2">2</label>
+                  <input type="radio" name="rating" value="1.5">
+                  <label class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half" for="rating-15">15</label>
+                  <input type="radio" name="rating" value="1">
+                  <label class="ratingControl-stars ratingControl-stars--1" for="rating-1">1</label>
+                  <input type="radio" name="rating" value="0.5">
+                  <label class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half" for="rating-05">05</label>
+              </div>
+              <div class="delete-field">
+
+              </div>
+            </div>
+          </li>
 
               </ul>
+          </div>
           </div>
 
 </template>
 <script>
 export default {
   name: "bookDetail",
-  // vuex:{
-  //   getters:{
-  //     items: state
-  //   }
-  //
-  // },
   data: function data() {
     return {
-    items: [
-     {
-       "book":{
-       id: "x_5KAQAAIAAJ",
-       title: "개",
-       author:"김훈",
-       cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-     },
-      comment:{
-        content:" dkfdjkfdkj",
-      },
-      star:{
-        content:" 5",
-      },
-      mark:{
-        content:["안녕" ],
-            },
-    },
-    {
-      "book":{
-      id: "x_5KAQAAIAAJ",
-      title: "개",
-      author:"김훈",
-      cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-    },
-     comment:{
-       content:" dkfdjkfdkj",
-     },
-     star:{
-       content:" 5",
-     },
-     mark:{
-       content:["안녕" ],
-           },
-   },
-    {
-      "book":{
-      id: "x_5KAQAAIAAJ",
-      title: "개",
-      author:"김훈",
-      cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-    },
-     comment:{
-       content:" dkfdjkfdkj",
-     },
-     star:{
-       content:" 5",
-     },
-     mark:{
-       content:["안녕" ],
-           }
-   },
-   {
-     "book":{
-     id: "x_5KAQAAIAAJ",
-     title: "개",
-     author:"김훈",
-     cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-   },
-    comment:{
-      content:" dkfdjkfdkj",
-    },
-    star:{
-      content:" 5",
-    },
-    mark:{
-      content:["안녕" ],
-          }
-  },
-          ],
-  selected_book: {
-      title: '',
-      author: '',
-      cover_thumbnail:'',
-      mark:'',
-      comment:'',
-      newComment:'',
-
-    },
-    newMark: '',
-
+        items:[],
+        selected_book: {
+          // title: '',
+          // author: '',
+          // cover_thumbnail:'',
+          // mark:'',
+          // comment:'',
+          // newComment:'',
+        },
+        newMark: '',
 
   }
 },
-  methods:{
-    selectedBook: function(book) {
-      this.items.selected_book = book;
-  // return this.showModal = true;
+methods:{
+  selectedBook: function(book) {
+      this.selected_book = book;
+    }
+},
 
-          },
-
+  mounted(){
+      var _this = this;
+      var items = this.items;
+      var token = 'Token ' + getCookie('SoobookToken');
+      // console.log('book_id:',this.book_id);
+      $.ajax({
+        url: "https://soobook.devlim.net/api/book/mybook/",
+        dataType: "	json",
+        type: "GET",
+        headers: {
+          Authorization: token,
+        },
+        success: function(data) {
+          // var mybooks = data.results.book;
+          console.log('성공 :', data);
+          console.log('책리스트 :', data.results);
+          for(var i = 0; i< data.results.length; i++){
+          console.log(data.results[i]);
+          items.push(data.results[i]);
+        }
+      },
+        error: function(error){
+          console.error('실패..:', error);
+          console.log('data:',data);
+        }
+      })
 }
 }
 </script>

@@ -10,7 +10,7 @@
     </div>
     <div class="utility">
     <div class="utility-inner">
-      <p class="total-msg">Total 등록 책 : <span>103권</span></p>
+      <p class="total-msg">Total 등록 책 : <span> {{count}} 권</span></p>
         <div class="btn-wrap">
           <router-link to="/mybook"><button type="button" class="view-btn"><i class="fa fa-th fa-2x" aria-hidden="true" ></i></button></router-link>
           <router-link to="/mybook/listview"><button type="button" class="view-btn"><i class="fa fa-th-list fa-2x" aria-hidden="true"></i></button></router-link>
@@ -38,9 +38,36 @@ export default {
   name: "myBook",
   data: function data() {
     return {
+      count : "",
     }
   },
   mounted () {
+    var _this = this;
+    var count = this.count;
+    var token = 'Token ' + getCookie('SoobookToken');
+    // console.log('book_id:',this.book_id);
+    $.ajax({
+      url: "https://soobook.devlim.net/api/book/mybook/",
+      dataType: "	json",
+      type: "GET",
+      headers: {
+        Authorization: token,
+      },
+      success: function(data) {
+        // var mybooks = data.results.book;
+        console.log('성공 :', data);
+        console.log('total :', data.count);
+        _this.count = data.count;
+    },
+
+      error: function(error){
+        console.error('실패..:', error);
+        console.log('data:',data);
+      }
+    })
+
+    //-------------
+
     var util = jQuery('.utility');
     var utilOffsetTop = Math.ceil(util.offset().top);
     jQuery(window).scroll(function() {

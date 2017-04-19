@@ -53,8 +53,26 @@ components:{
 children:[
     {path:'', component:galleryView},
     {path:'listview', component:listView},
+    {path:'bookdetail/:id', component:bookDetail,name:'detail'},
   ]
 },
+// {path: '/mybook_gall',
+// components:{
+//   default: galleryView,
+//   mybook: myBook
+//   header: loginHeader,
+//   footer: Footer
+// }
+// },
+// {path: '/mybook_list',
+// components:{
+//   default: myBook,
+//   listview: listView,
+//   header: loginHeader,
+//   footer: Footer
+// }
+// },
+
 
 
 {path:'/booksearch', components:{
@@ -62,11 +80,11 @@ children:[
   header: loginHeader,
   footer:Footer
 }},
-{path:'/bookdetail', components:{
-  default:bookDetail,
-  header: loginHeader,
-  footer:Footer
-}},
+// {path:'/bookdetail', components:{
+//   default:bookDetail,
+//   header: loginHeader,
+//   footer:Footer
+// }},
 
 
 {

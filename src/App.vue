@@ -3,7 +3,9 @@
     <!-- <video src="assets/book.mp4" loop autoplay></video> -->
     <!-- <h1><abbr title="Single Page Application">SPA</abbr></h1> -->
     <router-view name="header"></router-view>
-    <!-- <router-view name="main"></router-view> -->
+    <!-- <router-view name="home"></router-view> -->
+
+
 
     <transition name = "slide" mode="out-in">
       <!-- <router-view name="searchBar"></router-view>
@@ -653,6 +655,11 @@ color:#8a8488;
   font-weight: 400;
   margin: 0;
   font-size: 1rem;
+}
+.phrase-area li span{
+  color:#959595;
+  font-size: 1rem;
+  float:right;
 }
   footer{
     position: fixed;

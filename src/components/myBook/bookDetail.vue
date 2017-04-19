@@ -1,29 +1,30 @@
 <template>
   <div class="bg-wrap">
     <div class="wrap-1200">
-    <div class="selected_area">
-      <div class="books-info">
-        <div>
-      <img :src="selected_book.cover_thumbnail" :alt="selected_book.title">
+    <div class="selected_area" >
+      <div class="books-info" v-for="item in items">
+      <div>
+      <img :src="item.book.cover_thumbnail" :alt="item.book.title">
       </div>
       <div class="info-text">
-      <h3>{{selected_book.title}}</h3>
-      <p>저자 : {{selected_book.author}}</p>
+      <h3>{{item.book.title}}</h3>
+      <p>저자 : {{item.book.author}}</p>
       <div class="rating">
       <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
     </div>
     </div>
       </div>
       <!-- 리뷰부분 -->
-      <div class="review">
+      <div class="review" v-for="item in items">
         <form action="#">
-        <template v-if="show">
+        <template v-if="show" >
         <textarea
         name="name"
         rows="10"
         cols="65"
+        class="review-textarea"
         placeholder="책을 읽고 느낀 리뷰를 자유롭게 써주세요"
-        v-model="selected_book.newComment"
+        v-model="item.comment[0].content"
 
 
         ></textarea>
@@ -34,8 +35,8 @@
 
           <p
           class="review-content"
-         :key= "selected_book.comment"
-          >{{selected_book.comment}}</p>
+         :key= "item.comment[0].content"
+          >{{item.comment[0].content}}</p>
         </div>
 
         <!--버튼  -->
@@ -51,18 +52,22 @@
     <!-- 책속글귀 부분 -->
       <div class="book-phrase">
         <input
-              v-model="newMark"
-              @keyup.enter = "addNewText"
+              v-model="items[0].mark.content"
+              @keyup.enter = "addBookMark"
               type="text"
+              class="bookmark"
               placeholder="기억에 남는 책속 글귀를 입력해주세요.">
-        <button type="button" @click="addNewText">입력</button>
+        <button type="button" @click="addBookMark">입력</button>
         </div>
         <ul class="phrase-area" >
           <li
-          v-for=" text in selected_book.mark"
-          :key= "text"
-          @remove= "selected_book.mark.splice(index,1)"
-          >{{text}}</li>
+          v-for=" mark in items[0].mark"
+          :key= "mark"
+
+          >{{mark.content}}
+          <button type="button" @click="deleteBookMark">x</button>
+          <span>{{mark.update_date}}</span>
+        </li>
         </ul>
     </div>
   </div>
@@ -74,47 +79,149 @@ export default {
   name: "",
   data: function data() {
     return {
-      items: [
-        {
-         "book":{
-         id: "x_5KAQAAIAAJ",
-         title: "개",
-         author:"김훈",
-         cover_thumbnail: "http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-       },
-        "comment": " ",
-        "newComment": " ",
-        "star": " ",
-        "mark":
-          [ "블라블라"],
-      }
-     ],
-     selected_book: {
-         title: '개',
-         author: '김훈',
-         cover_thumbnail:'http://books.google.com/books/content?id=x_5KAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
-         mark:['안녕하세요',],
-         newComment:'',
-         comment:'',
-      },
-      show : true,
-      newMark:'',
+      items: [ ],
+      bookid:'',
+      show : !true,
+
     }
   },
+  mounted(){
+    var _this = this;
+    var items = this.items;
+    var bookid = this.bookid;
+    var token = 'Token ' + getCookie('SoobookToken');
+    // console.log('book_id:',this.book_id);
+    $.ajax({
+      url: "https://soobook.devlim.net/api/book/mybook/detail/?bookid=" + bookid ,
+      dataType: "	json",
+      type: "GET",
+      data:{
+        bookid: this.$route.params.id
+      },
+      headers: {
+        Authorization: token,
+      },
+      success: function(data) {
+        // var mybooks = data.results.book;
+        console.log('성공 :', data);
+        console.log('디테일 :', data);
+        for(var i = 0; i< data.length; i++){
+        console.log(data[i]);
+        items.push(data[i]);
+      }
+    },
+      error: function(error){
+        console.error('실패..:', error);
+        console.log('data:',data);
+      }
+    })
+
+
+  },
   methods: {
-  addNewText : function(){
-      this.selected_book.mark.unshift(this.newMark);
-      this.newMark = '';
+  addBookMark : function(){
+    var mark = document.querySelector('.bookmark').value;
+    var token = 'Token ' + getCookie('SoobookToken');
+    var items = this.items;
+    $.ajax({
+        url: "https://soobook.devlim.net/api/book/mark/",
+        type: 'POST',
+        headers: {
+          Authorization: token,
+        },
+        dataType: "json",
+        data: {
+          mybook_id: items[0].mybook_id,
+          content: mark
+        }
+    })
+    .done(function(response) {
+        console.log('mark add 성공', response);
+        items[0].mark[0].content = mark;
+        mark = '';
+      })
+    .fail(function(response) {
+        console.log('fail', response);
+        console.log('items', items);
+
+    });
+
 
       // this.selected_book.bookTexts='';
   },
-  addnewReview:function(){
-    this.selected_book.comment = this.selected_book.newComment;
+  deleteBookMark(){
+    var items = this.items;
+    var token = 'Token ' + getCookie('SoobookToken');
+    $.ajax({
+        url: "https://soobook.devlim.net/api/book/mark/",
+        type: 'DELETE',
+        headers: {
+          Authorization: token,
+        },
+        dataType: "json",
+        data: {
+          mark_id: items[0].mark[0].id
+        }
+    })
+    .done(function(response) {
+        console.log('done', response);
+      })
+    .fail(function(response) {
+        console.log('fail', response);
+        console.log('deleteMark', items[0].mark[0].id);
+    });
+  },
+  addnewReview(mybook_id,content){
+    var review = document.querySelector('.review-textarea').value;
+    var token = 'Token ' + getCookie('SoobookToken');
+    var items = this.items;
+    $.ajax({
+        url: "https://soobook.devlim.net/api/book/comment/",
+        type: 'POST',
+        headers: {
+          Authorization: token,
+        },
+        dataType: "json",
+        data: {
+          mybook_id: items[0].mybook_id,
+          content: review
+        }
+    })
+    .done(function(response) {
+        console.log('done', response);
+      })
+    .fail(function(response) {
+        console.log('fail', response);
+        console.log('items', items);
+
+    });
     this.show = !true;
   },
   deleteReview:function(){
-    this.selected_book.comment='';
-    this.selected_book.newComment='';
+    var items = this.items;
+    var token = 'Token ' + getCookie('SoobookToken');
+    $.ajax({
+        url: "https://soobook.devlim.net/api/book/comment/",
+        type: 'DELETE',
+        headers: {
+          Authorization: token,
+        },
+        dataType: "json",
+        data: {
+          comment_id: items[0].comment[0].id
+        }
+    })
+    .done(function(response) {
+        console.log('done', response);
+        items.comment[0].content='';
+
+      })
+    .fail(function(response) {
+        console.log('fail', response);
+        console.log('items', comment);
+    });
+
+    // items.comment[0].content = '';
 
   },
 
